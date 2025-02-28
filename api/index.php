@@ -54,6 +54,16 @@ try {
     $response = ['error' => $e->getMessage()];
 }
 
+// Логируем входящий запрос через RestLogger
+\App\RestLogger::log([
+    'request_method' => $_SERVER['REQUEST_METHOD'],
+    'request_uri' => $_SERVER['REQUEST_URI'],
+    'request_body' => $data,
+    'response_body' => $response,
+    'response_status' => http_response_code(),
+    'execution_time' => microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"]
+]);
+
 // Отправляем ответ
 echo json_encode($response);
 
