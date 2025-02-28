@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/config/config.inc.php';
-
+require_once __DIR__ . '/vendor/autoload.php';
 
 // Разрешаем CORS
 header('Access-Control-Allow-Origin: *');
@@ -37,16 +37,17 @@ try {
         throw new Exception('Обработчик не найден');
     }
     
+    // Получаем имя функции обработчика (берем часть после / если есть)
+    $handler_function = strpos($action, '/') !== false ? substr($action, strrpos($action, '/') + 1) : $action;
     
     require_once $handler_file;
     
     // Вызываем функцию обработчика
-    $handler_function = 'handle_' . $action;
     if (!function_exists($handler_function)) {
         throw new Exception('Функция обработчика не найдена');
     }
     
-    $response = $handler_function($data);
+    $response = $handler_function($data['data']);
     
 } catch (Exception $e) {
     http_response_code(500);

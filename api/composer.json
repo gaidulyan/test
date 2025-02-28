@@ -1,0 +1,13 @@
+{
+    "name": "api/project",
+    "description": "API проект с автозагрузкой классов",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.4"
+    }
+}
