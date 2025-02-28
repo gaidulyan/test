@@ -64,6 +64,7 @@ try {
     'execution_time' => microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"]
 ]);
 
+
 // Отправляем ответ
 echo json_encode($response);
 
