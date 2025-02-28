@@ -30,7 +30,8 @@ class RestLogger {
                 'user_id' => isset($params['user_id']) ? $params['user_id'] : null,
                 'ip_address' => isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : null,
                 'user_agent' => isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : null,
-                'execution_time' => isset($params['execution_time']) ? $params['execution_time'] : null
+                'execution_time' => isset($params['execution_time']) ? $params['execution_time'] : null,
+                'app_name' => isset($params['app_name']) ? $params['app_name'] : null
             ];
             
             // Формируем SQL-запрос для вставки лога
